@@ -1,0 +1,489 @@
+1.数组的常用循环方法都有哪些（for）(forEach)(map)(for in )(filter)(reduce)(for of)
+2.组件实例的三大核心属性是（状态state）（属性props）（上下文context）
+3.虚拟dom和真实dom的区别：
+	性能：虚拟dom通过比较差异来最小化真实dom的操作，减少了浏览器的重排和重绘，提高了性能
+	更新：虚拟dom可以通过批量更新，将多个操作合并为一个操作，减少操作的次数，提高了更新效率
+	抽象：虚拟dom是真实dom的抽象表示，开发者可以声明式的方式描述页面的结构和状态，使得代码更加清晰和易于维护
+	跨平台：虚拟dom可以在不同的平台上运行，例如react native可以使用虚拟dom来描述移动端的ul界面
+	内存占用:虚拟dom在内存中以javascript对象的形式存在，占用的内存较小。而真实dom需要占用较多的内存空间
+
+	总的来说虚拟dom相对于真实dom来说更加高效和灵活，可以提高开发效率和用户体验。
+4.reat生命周期分为三个阶段，都有哪些作用
+	分为 挂载阶段 更新阶段 卸载阶段
+5.箭头函数和普通函数有哪些区别
+	a1.箭头函数使用=>定义函数 省略了function和大括号
+	a2.箭头函数没有自己的this，他会继承外层作用域的this
+	a3.箭头函数没有构造函数，不能使用new关键字实例化对象，普通对象可以使用new实例化对象
+	a4.箭头函数没有自己的argument对象，但是可以通过rest参数来获取传入的参数，但是普通函数有自己的argument对象，
+	a5.箭头函数不能作为对象的方法，因为他没有自己的this，普通函数可以作为对象的方法，并且this指向该对象
+6.bind，call，appply的区别
+	bind方法会创建一个新的函数，并且指定的对象绑定为新的函数的this，但是bing不会立即执行
+	call方法会立即执行，并且将指定的对象绑定为函数的this，可以传入多个参数
+	apply和call类似，也会立即执行，并且将指定的对象绑定为函数的this，但是apply只能接受两个参数，第二个参数必须是数组或者对象
+7.js继承的几种方式，分别说明优缺点
+	a1.原型链继承:
+		优点：简单易懂，易于实现
+		缺点：所有实例共享一个原型对象，无法实现多继承，子类无法向父类传参数
+	a2.构造函数继承（借用构造函数）
+		优点：可以向父类传递参数，每个实力都有自己的属性副本
+		缺点：无法继承父类原型上的方法，每个实力都有自己的方法副本
+	a3.组合式继承（构造函数继承+原型链继承）：
+		优点：既可以继承父类原型上的原型，又可以向父类传递参数，实力既有自己的属性副本，又可以共享父类原型上的方法
+		缺点：调用了两次父类构造函数，生成了两份实例属性副本
+	a4.寄生组合式继承（寄生式继承+组合继承）：
+		优点：既可以继承父类原型上的方法，又可以向父类传递参数，实例既有自己的属性副本，又可以共享父类原型上的方法，避免了组合继承的缺点
+		缺点：相对复杂一些，需要额外的中间对象
+8.深拷贝浅拷贝有什么区别，怎么实现深拷贝？
+	浅拷贝是指创建一个新对象，新对象的内容是原型对象的引用，也就说，新对象和原对象共享一块内存空间，对其中一个对象的修改也会影响另一个对象
+	深拷贝是指创建一个新对象，新对象的内容是原对象的副本。也就是说，新对象和原对象拥有各自独立的内存空间，对其中一个对象的修改不会影响另一个对象
+	
+9.class类的静态属性和静态方法
+	静态方法是指在类中定义的方法，它属于类本身而不是类实例。静态方法可以通过类名直接调用，也可以通过类的实例调用
+	静态属性可以通过类名直接访问，也可以通过类的实例访问，静态属性在所有类的实例之间是共享的，即他们具有相同的值，静态属性通常用于存储于类相关的常量或共享的数据
+10.React的特性都有哪些
+	虚拟dom：react虚拟dom来提高性能，
+	组件化开发：react将ul拆分为独立可复用组件，每个组件都有自己的状态和属性
+	单向流数据：数据从父级组件流向子级组件，子组件不能直接修改父组件的数据
+	Jsx语言：react使用jsx语言来描述组件的结构和样式，他是一种将html和javascript结合的语言扩展，
+11.函数组件和class组件的区别
+	函数组件：
+		定义方式：使用函数定义组件
+ 		语法：函数组件是一个纯函数，接受props作为参数，并返回一个React元素。
+		状态管理：函数组件没有内部状态，只能通过props来接受外部传递的数据
+		生命周期：函数没有生命周期方法。
+		简洁性：函数组件通常比类组件更简洁，代码量更少。
+		性能：函数组件相对于类组件来说，性能更高，因为他没有实例化的过程
+	类组件
+		定义方式：使用类来定义组件，继承自React.Component
+		语法：类组件通过reader（）方法返回一个React元素
+		状态管理：类组件可以使用内部状态（state）来管理组件的数据，并通过setState（）方法来更新状态。
+		生命周期：类具有生命周期方法，可以在不同的生命周期阶段执行相应的操作
+		
+		函数组件适用于简单的展示型组件，而类组件适用于复杂的交互式组件
+12.判断是否是一个数组的方法，写出三种
+	isArray（Array.inArray(arr)），istanceof（arr instanceof Array）
+	Object.prototype.toString.call()方法
+13.React组件的特点都有哪些
+	可复用性，单向流，虚拟dom，生命周期方法，jax语法，高效的更新机制
+14.Js中，普通的函数调用方式有三种：直接调用、方法调用和new调用。This分别指向什么？
+	1)直接调用会指向windows对象
+	2)方法调用会指向调用this的这一方法
+	3)New调用，会指向new创建出来的那个对象
+15.Class类构造器的定义和继承，请创建两个类进行继承，分别创建Person，Child两个类
+	Class Person{
+		Constructor(name,age){
+		This.name=name;
+		This.age=age;
+	}
+	Hobbys(){
+		Console.log(‘篮球’)
+	}
+		}
+	Class Child Extends Person{
+		Constructor(name,age,hobby){
+		Super(name,age);//调用父类的构造函数
+		This.hobby=hobby
+	}
+	Hobbys(){
+		Super.Hobbys();//调用父类方法
+		console.log(‘My hobby’)
+		}
+	}
+	Const person=new Person(‘呼呼’,20)
+	Person.Hobbys()
+	Const child=new Person(‘果果’,26，‘篮球’)
+	Child.Hobbys()
+16.Jsx的使用规范
+	1)Jsx中编写的代码要放在render函数中,并通过return返回
+	2)Jsx中实现想要通过class属性更改样式，需要通过使用className属性
+	3)Jsx创建标签，1.必须有闭合 2.标签要有根节点 3.标签必须全写
+	4)Jsx本身不被浏览器所解释，需要通过babel来解析，否则jsx代码无效
+17.虚拟dom的创建方式，以及如何理解虚拟dom
+	虚拟dom是一个轻量级的javascript对象，他是真实dom的一种抽象，
+	虚拟dom通过React.createElement()或jsx语法来创建React元素
+
+	  虚拟dom他是一种来描述ul结构中间层，当组件发生变化时，react会使虚拟dom来计算出新的虚拟dom树，
+	  并通过比较新旧虚拟dom树的差异，最终只更新需要更新的部分到真实dom中，从而提高页面渲染的效率，
+	虚拟dom优势：提高性能，简化开发，跨平台支持
+	虚拟dom是react核心概念之一，他通过抽象表示ul结构，提高了页面渲染的效率，并且简化了开发过程
+18.扩展运算符都有哪些作用，详细介绍一下
+		数组展开：扩展运算符可以将一个数组展开为多个独立的值。
+		这在需要将一个数组的元素插入到另一个数组或函数参数列表中时非常有用。
+ 		对象字面量扩展：扩展运算符可以在对象字面量中使用，
+		以将一个对象的属性和方法展开到另一个对象中。
+		字符串展开：扩展运算符可以将一个字符串展开为单个字符的数组。
+		const str = 'hello';   const letters = [...str]
+		浅拷贝和合并对象：扩展运算符可以用于浅拷贝对象或合并多个对象。
+		const obj3 = { a: 1 }; const mergedObj = { ...obj3 };
+		 、7数组去重：扩展运算符可以用于快速去重一个数组。 ...new Set(numbers)
+19.React中ref的使用方式都有哪些,写出三种优缺点是什么
+	a1.react标签 第一种方案：event.target.value
+	a2.找到标签去写ref 获取的hi是通过this.refs.ref对应的名字.value
+	a3.ref写成回调：定义找到标签（el）=>this.起的名字}获取的时候this.起的名字.内容
+20.react中受控组件，如何实现受控组件双向数据绑定，具体实现
+	在react中，受控组件是指表单是值由React的state来控制的组件。受控组件实现了数据双绑定，
+	即当用户输入时，表单元素的值更新state，同时state的值改变时，表单元素的值也会更新
+21.React中ref的使用方式都有哪些,写出三种优缺点是什么
+	a1.字符串：
+		优点：简单易懂，适用于简单的场景
+		缺点：不推荐使用，因为他在未来的react版本中可能被淘汰，无法再函数组件中使用
+	a2.回调ref：
+		优点：可以在函数组件和类组件中使用。可以在组件挂在后立即访问dom元素
+		确缺点：代码稍微负载一些
+	a3.创建ref：myRef = React.createRef();
+		优点:推荐ref使用方式。可以在组件和类组件中使用。可以在组件挂载后立即访问dom元素
+		缺点：无法在循环中使用，因为ref是一个对象，而不是一个数组
+	总结：字符串ref简单易懂，当是不推荐使用。回调函数适用于函数组件和类组件，单吗稍微复杂一些
+	          创建ref是推荐的方式，适用于函数组件和类组件
+22.面向对象编程的方式的理解
+	优点：
+	可重用行：通过封装和继承，可以重用自己的代码，减少重复编写相似功能的工作
+	可维护性：封装和继承是代码更加模块化和结构化，易于理解和维护
+	可扩展行：通过继承和多态，可以方便地扩展和修改代码，适应需求的变化。
+	抽象性：面向对象编程可以将复杂的问题抽象成简单的对象和类，提高代码的可读性和可理解性。
+	总结：面向对象编程是一种将现实世界的事物抽象成对象的编程方式，
+		通过封装、继承、多态等机制来实现代码的重用性、可维护性和扩展性。
+		它是一种强大的编程范式，广泛应用于各种编程语言和领域。
+23.请说出常用的数组方法及作用至少说10个
+	Some:只要一个符合就返回true
+	Every：只要有一个不符合就返回false
+	forEach：循环数组，执行指定的函数或代码逻辑
+	Splice：第一个参数是从哪开始，第二个参数是删除终点位置，删除到哪。
+	Split：切割，以什么来切割，
+	Push:向数组添加一个元素
+	Pop:从数组末尾删除一个元素
+	Shift：删除数组的第一个元素，并返回数组的值
+	Unshif：将一个或者多个元素添加到数组的开头，并返回新数组的长度
+	Concat：将2个以上的数组合并
+	Join：将数组所有元素连接成一个字符串
+	IndexOf:返回指定元素首次出现的下标
+	Includes：判断数组中是否包含某个元素，返回布尔值，
+24.什么是原型，什么是原型链，说说你的理解？
+	在javascript中，每个对象都有一个原型，原型是一个对象，它包含了共享属性和方法的对象
+
+	 原型链是一种机制，用于实现对象之间的继承。每个对象都有一个原型，而原型本身也是一个对象，
+	他有自己的原型，这样就形成了一个原型链，通过原型链，我们可以在对象之间共享属性和方法
+
+	当我们访问一个对象的属性或方法时，javascript会首先在对象本身查找，如果找不到，它会继续在原型对象中查找，
+	如果找不到，就会继续在原型对象的原型对象中查找，直到找到该属性或方法或者到达原型链的末端。
+	如果在整个原型链上都没有找到该属性或者方法，那么就会返回undefined
+25.什么是作用域，什么是作用域链？
+	作用域是指变量可以访问的范围，它分为全局作用域块级作用域，全局作用域是在任何部位都等访问到，块级作用域是只能在当前函数内可以访问到。
+
+	作用域链是由多个作用域对象组成的，他决定了变量的查询顺序，它首先会在当前作用域查找。如果未查到，会沿着作用域链一直找下去，直到找该变量或找到全局作用域
+26.S6新增了那些新特性至少说8个，你都用过那些？在哪儿用的？
+	箭头函数：使用=>定义函数，简化了函数的写法和this的指向问题
+	Let和const关键字：用于声明块级作用域，取代了var关键字
+	模板字符串：使用反引号（` `）包裹字符串，可以在字符串中插入变量和换行
+	结构赋值：可以从数组或者对象中提取赋值，赋给变量，简化了变量的声明和赋值过程
+	扩展运算符：用三个点（...），可以将数组或者对象展开，简化了数组和对象的操作
+	Promise：用于处理异步操作，解决了回调地狱的问题，提供了更好的异步编程方式
+	类和模板：引入了类和模块的操作概念，
+	默认参数：在函数定义时可以为参数设置默认值
+27.为什么虚拟DOM会提升性能，列表渲染中key的作用是什么?
+	虚拟DOM它是可以通过新旧两个DOM的比较获取其中的差异，只更新有差异的部分，最小化操作实际DOM，
+	减少了浏览器的重绘和回流。而且他们是可以在内存中比较虚拟DOM的差异，它还可以通过批量更新，合并多个DOM操作，提高性能
+
+	Key是给每一个列表项添加一个唯一标识，使我们可以更快更准确的找到该列表项，从而提高效率
+28.class组件和函数组件有什么区别?
+	语法：Class组件是使用ES6的class语法来定义的，而函数组件是使用函数来定义的。
+	写法：Class组件需要继承自React.Component，并且使用render()方法来返回组件的内容，而函数组件只需要定义一个函数，函数的返回值就是组件的内容
+	状态管理：Class组件可以使用this.state来管理组件的状态，而函数组件需要使用React的Hooks来管理状态
+	性能：由于Class组件需要创建实例对象，因此在一些性能要求较高的场景下，函数组件比Class组件更加高效。
+	函数组件更加简洁、易于理解和维护，适用于简单的UI组件；而Class组件更加灵活，适用于复杂的UI组件和需要状态管理的场景
+29.React中事件绑定函数的方法有哪些? 函数如何传递参数
+	使用箭头函数：<button onClick={() => handleClick(param)}>Click</button>
+	使用bind方法：<button onClick={handleClick.bind(this, param)}>Click</button>
+	使用类组件的实例方法：class MyComponent extends React.Component {
+  				handleClick(param) {
+    				// 处理点击事件
+  				}
+  				render() {
+    				return <button onClick={this.handleClick.bind(this, param)}>Click</button>;
+  				}
+				}
+30.React中如何获取表单的数据？
+	使用受控组件：通过在表单元素上设置value属性，并在onChange事件中更新state来实现双向绑定。然后可以通过state来获取表单的数据
+	使用非受控组件：通过使用ref来获取表单元素的值。
+	无论使用受控组件还是非受控组件，都可以通过事件处理函数来获取表单的数据。
+31.React条件渲染的方法有哪些？
+	使用if语句:在render方法中使用if语句来判断条件，根据条件返回不同的组件或元素。
+	render() {
+  		if (condition) {
+    		return <Component1 />;
+  		} else {
+    		return <Component2 />;
+  		}
+	}
+	使用三元表达式:在JSX中使用三元表达式来根据条件返回不同的组件或元素
+	<div>
+      	{condition ? <Component1 /> : <Component2 />}
+    	</div>
+	使用逻辑与运算符:在JSX中使用逻辑与运算符来根据条件返回不同的组件或元素。
+ 	<div>
+      	{condition && <Component1 />}
+      	{!condition && <Component2 />}
+    	</div>
+	使用变量：在render方法中定义一个变量，根据条件给变量赋值，然后根据变量的值返回不同的组件或元素。
+	let component;
+  	if (condition) {
+    	component = <Component1 />;
+  	} else {
+    	component = <Component2 />;
+  	}
+  	return component;
+32.React如何实现列表数据渲染？
+	使用map方法：使用数组的map方法遍历列表数据，并返回一个包含每个元素的组件数组
+	render() {
+  	const listData = [1, 2, 3, 4, 5];
+  	const listItems = listData.map((item) => <li key={item}>{item}</li>);
+ 	 return <ul>{listItems}</ul>;
+	}
+	使用for循环:使用for循环遍历列表数据，并将每个元素添加到一个组件数组中。
+	使用数组的forEach方法：使用数组的forEach方法遍历列表数据，并将每个元素添加到一个组件数组中。
+33.React中css样式定义的方式?
+	使用内联样式：可以在组件的JSX中使用style属性来定义内联样式，样式属性的值是一个对象。const styles = {
+    		color: 'red',
+    		fontSize: '16px',
+    		backgroundColor: 'yellow'
+ 		 }; <div style={styles}>Hello, React!</div>;
+	使用CSS模块化：可以使用CSS模块化来定义组件的样式，通过将CSS文件导入到组件中，并使用导入的样式类名来应用样式。
+		import styles from './MyComponent.module.css';
+		render() {
+  		return <div className={styles.myClass}>Hello, React!</div>;
+		}
+	使用CSS-in-JS库：可以使用CSS-in-JS库来在组件中定义样式。
+		import styled from 'styled-components';
+
+		const StyledDiv = styled.div`
+  			color: red;
+  			font-size: 16px;
+ 			background-color: yellow;
+		`;
+		render() {
+  		return <StyledDiv>Hello, React!</StyledDiv>;
+		}
+34.找出数组【1,2,3,4,5,3,2,2,4,2,2,3,1,3,5】中出现次数最多的数，并统计出现多少次，编写一个函数
+
+	function findMostFrequentNumber(arr) {
+  	let count = {};
+  	let maxCount = 0;
+  	let mostFrequentNumber = null;
+
+  	for (let i = 0; i < arr.length; i++) {
+    	const num = arr[i];
+    	count[num] = (count[num] || 0) + 1;
+
+    	if (count[num] > maxCount) {
+      	maxCount = count[num];
+      	mostFrequentNumber = num;
+   	 }
+  	}
+
+  	return {
+    	number: mostFrequentNumber,
+    	count: maxCount
+  	};
+	}
+
+	const arr = [1, 2, 3, 4, 5, 3, 2, 2, 4, 2, 2, 3, 1, 3, 5];
+	const result = findMostFrequentNumber(arr);
+	console.log(`出现次数最多的数是 ${result.number}，出现了 ${result.count} 次`);
+
+35.受控组件和非受控组件
+	使用受控组件：通过在表单元素上设置value属性，并在onChange事件中更新state来实现双向绑定。然后可以通过state来获取表单的数据
+	使用非受控组件：通过使用ref来获取表单元素的值。
+	无论使用受控组件还是非受控组件，都可以通过事件处理函数来获取表单的数据。
+36.Js中new关键字的作用
+	a1.创建一个空对象
+	a2.将该空对象的原型指向构造函数的原型对象。
+	a3.将构造函数的上下文（this）指向该空对象。
+	a4.执行构造函数中的代码，初始化对象的属性和方法。
+	a5.返回该对象实例。
+37.说说你对Promise的理解？有哪些参数，状态，Api
+	Promise有三种状态：pending（进行中）、fulfilled（已成功）和rejected（已失败）。	
+	初始状态为pending，当异步操作执行成功时，状态变为fulfilled，并返回异步操作的结果；当异步操作执行失败时，状态变为rejected，并返回错误信息。
+
+	Promise的构造函数接受一个执行器函数作为参数，该函数有两个参数：resolve和reject。resolve用于将Promise的状态从pending变为fulfilled，并返回异步操作的结果；
+	reject用于将Promise的状态从pending变为rejected，并返回错误信息。
+	Promise提供了一些常用的API，包括：
+		then：用于注册当Promise状态变为fulfilled时的回调函数，可以链式调用多个then方法。
+		catch：用于注册当Promise状态变为rejected时的回调函数，可以链式调用多个catch方法。
+		finally：用于注册当Promise状态变为fulfilled或rejected时的回调函数，无论Promise的状态如何，都会执行。
+		all：接收一个Promise数组作为参数，返回一个新的Promise，当所有Promise都变为fulfilled时，新的Promise变为fulfilled，并返回所有Promise的结果；
+		       当有任意一个Promise变为rejected时，新的Promise变为rejected，并返回第一个被rejected的Promise的错误信息。3
+
+		race：接收一个Promise数组作为参数，返回一个新的Promise，当有任意一个Promise变为fulfilled或rejected时，
+		        新的Promise变为相同的状态，并返回第一个变为fulfilled或rejected的Promise的结果或错误信息
+38.说说你对闭包的理解
+	闭包是指在一个函数内部定义的函数，并且该内部函数可以访问外部函数的变量，
+	闭包可以创建私有变量和实现函数的柯力化。
+	优点：
+		实现私有变量：通过闭包可以实现私有变量，这些变量只能在函数内部访问，外部无访问，从而保护数据的安全性
+		延长变量的生命周期：通过闭包，可以将变量的生命周期延长，使其在函数执行完毕后仍然可以被访问和使用。
+		实现函数柯里化：通过闭包，可以将函数的参数部分应用，返回一个新的函数，方便后续的调用和复用。
+	缺点：
+		内存占用：闭包会将外部函数的变量保存在内存中，如果不及时释放，可能会导致内存泄漏，增加内存占用。
+		性能问题：由于闭包会涉及到作用域链的查找，可能会导致一定的性能损耗，特别是在闭包嵌套层级较深的情况下。
+		容易造成变量泄露：如果不注意闭包中变量的使用和释放，可能会造成变量泄露，导致意外的结果。
+39.React 中state和props的理解
+	state是组件内部的数据，用于存储和管理组件的状态。它是可变的，可以通过setState()方法来更新。当state发生变化时，React会重新渲染组件，并更新相应的DOM。
+	props是组件的属性，用于传递数据给子组件。它是不可变的，只能由父组件传递给子组件，子组件不能直接修改props。父组件可以通过更改props的值来重新渲染子组件。
+
+	state和props的区别在于它们的作用和使用方式。state用于管理组件的内部状态，可以在组件内部进行修改和更新。
+	 props用于传递数据给子组件，一般由父组件传递给子组件，子组件只能读取props的值，不能修改。
+
+	在React中，通常将state定义在组件的构造函数中，并通过this.state来访问和修改。而props则通过组件的属性来传递和接收。
+
+	使用state和props可以实现组件的动态更新和数据传递，使得组件可以根据不同的状态和属性展示不同的内容。
+40.生命周期调用方法的顺序是什么，挂载和更新阶段都是什么时候触发
+	顺序:初始化阶段--挂载阶段—更新阶段—销毁阶段
+	挂载阶段是指组件第一次被渲染到DOM中的过程
+	更新阶段是指组件在接收到新的props或state时重新渲染的过程
+41.对象的创建方式有哪些？有什么区别
+	字面量方式：使用花括号{}创建对象字面量，直接定义对象的属性和方法const obj = { name: 'John', }//这种方式简单直接，适用于创建简单的对象
+	构造函数方式：使用构造函数创建对象，通过new关键字实例化对象
+	function Person(name, age) {
+  		this.name = name;
+  		this.age = age;
+ 	 	this.sayHello = function() {
+    		console.log('Hello!');
+  		};
+	}
+
+	const obj = new Person('John', 25);//这种方式可以定义对象的属性和方法，并且可以通过原型链实现属性和方法的共享。
+
+	Object.create()方式：使用Object.create()方法创建对象，指定原型对象
+	const personProto = {
+ 		 sayHello: function() {
+    		console.log('Hello!');
+  		}
+	};
+
+	const obj = Object.create(personProto);
+	obj.name = 'John';
+	obj.age = 25;//这种方式可以指定对象的原型，实现属性和方法的继承。
+42.事件代理事件委托的理解
+	事件代理（也称为事件委托）是一种常见的前端开发技术，它利用了事件冒泡的特性，将事件处理程序绑定到父元素上，而不是直接绑定到每个子元素上。
+	通过事件代理，我们可以在父元素上监听子元素的事件，并在父元素上统一处理这些事件。
+	当子元素触发事件时，事件会冒泡到父元素，然后由父元素的事件处理程序来处理。事件代理的优点有
+
+	优点：
+	动态绑定事件：当有新的子元素添加到父元素中时，无需手动为新元素绑定事件，因为事件处理程序已经绑定到父元素上，新元素也会受到事件代理的影响。
+	减少内存消耗：通过将事件处理程序绑定到父元素上，而不是每个子元素上，可以减少内存消耗，特别是在有大量子元素的情况下
+	简化代码逻辑：通过事件代理，可以将事件处理程序集中在父元素上，简化代码逻辑，减少重复代码
+43.Props可以校验那些数据类型
+	PropTypes.string：校验props是否为字符串类型。
+	PropTypes.number：校验props是否为数字类型。
+	PropTypes.bool：校验props是否为布尔类型。
+	PropTypes.array：校验props是否为数组类型。
+	PropTypes.object：校验props是否为对象类型。
+	PropTypes.func：校验props是否为函数类型
+44.React中受控组件，如何实现受控组件双向数据绑定，具体实现
+	在组件的state中定义一个属性，用于存储表单元素的值。
+	将该属性绑定到表单元素的value属性上，使其成为受控组件。
+	为表单元素添加一个onChange事件处理程序，用于更新state中的属性值。
+45.Object.defineProperty的理解
+	给一个对象定义一个新的属性或修改一个对象现有的属性，并且返回这个对象
+	其中也有一些参数：参数1：value：属性值，参数2：get()：给一个属性提供getter方法，当访问这个对象的属性值时触发该方法
+			参数3：set()：给一个属性提供setter方法，当设置这个对象的属性值时触发该方法
+	var obj = {};
+　　	Object.defineProperty(obj,"name",{value:"Leslie Cheung"});
+　　	Object.defineProperty(obj,"age",{value:22});
+46.diff算法
+	在React中，diff算法被用于虚拟DOM的更新和渲染过程中。React使用diff算法来比较前后两个虚拟DOM树的差异，并只更新需要更新的部分，以提高性能。
+	diff算法在版本控制系统（如Git）和文本编辑器（如Vim）中广泛应用。它可以帮助用户了解两个文本之间的差异，并方便地进行合并、比较和修改操作。
+47.React和vue的区别
+	React和Vue是两个流行的JavaScript前端框架
+	数据绑定：Vue使用双向数据绑定，可以实现数据的自动更新。React则使用单向数据流，通过props和state来管理组件的数据。
+	React通过setState方法来更新组件的状态。
+
+	性能：React在性能方面表现出色，通过虚拟DOM和diff算法来优化渲染过程。Vue也有类似的优化机制，但React在大型应用中的性能表现更好
+	组件化开发：Vue和React都支持组件化开发，但在语法和实现上有所不同。
+	Vue使用单文件组件（.vue文件）来定义组件，包含模板、样式和逻辑。React则使用JSX语法，将组件的模板和逻辑写在同一个JavaScript文件中
+	生态系统：React拥有更大和更活跃的生态系统，有更多的第三方库和工具可供选择。Vue的生态系统也在不断发展壮大，但相对来说规模较小。
+	React更加灵活和底层，适合有一定前端开发经验的开发者。Vue则更加简单和易用，适合初学者或快速开发项目
+
+48.React虚拟dom的两种创建方式
+	JSX语法：SX是一种类似HTML的语法扩展，它允许我们在JavaScript代码中编写类似HTML的结构。通过使用JSX，我们可以直接在代码中创建虚拟DOM
+	const element = <div className="my-class">Hello, React!</div>;
+
+	React.createElement()方法：React提供了一个createElement()方法，用于创建虚拟DOM，这个方法接受三个参数：元素类型、属性对象和子元素
+	const element = React.createElement('div', { className: 'my-class' }, 'Hello, React!');
+49.js判断数组中是否包含某个值，写出三种方法
+	使用Array.prototype.includes()方法：
+	const array = [1, 2, 3, 4, 5];
+	const value = 3;
+
+	if (array.includes(value)) {
+  		console.log("数组中包含该值");
+	} else {
+  		console.log("数组中不包含该值");
+	}
+	使用Array.prototype.indexOf()方法：
+	const array = [1, 2, 3, 4, 5];
+	const value = 3;
+
+	if (array.indexOf(value) !== -1) {
+ 		 console.log("数组中包含该值");
+	} else {
+ 		 console.log("数组中不包含该值");
+	}
+	使用Array.prototype.find()方法：
+	const array = [1, 2, 3, 4, 5];
+	const value = 3;
+
+	const found = array.find(element => element === value);
+
+	if (found) {
+  	console.log("数组中包含该值");
+	} else {
+  	console.log("数组中不包含该值");
+	}
+50.React中如何加点击事件，事件方法中this指向undefind如何解决
+	在React中，可以通过在组件的元素上添加onClick属性来添加点击事件
+	class MyComponent extends React.Component {
+  	handleClick() {
+    	// 处理点击事件的逻辑
+  	}
+
+  	render() {
+    		return (
+      		<button onClick={this.handleClick}>点击我</button>
+    		);
+  	}
+	}
+	
+	使用箭头函数：将事件方法定义为箭头函数，这样它会自动绑定当前组件实例作为this
+	class MyComponent extends React.Component {
+  	handleClick = () => {
+    	// 处理点击事件的逻辑
+  	}
+
+  	render() {
+    	return (
+      	<button onClick={this.handleClick}>点击我</button>
+    	);
+  	}
+	}
+	使用bind方法：在组件的构造函数中使用bind方法将事件方法绑定到当前组件实例
+	class MyComponent extends React.Component {
+  	constructor(props) {
+    	super(props);
+    	this.handleClick = this.handleClick.bind(this);
+  	}
+
+  	handleClick() {
+    	// 处理点击事件的逻辑
+  	}
+
+  	render() {
+    	return (
+      	<button onClick={this.handleClick}>点击我</button>
+    	);
+  	}
+	}
+51.React中setState是同步还是异步
+	在React中，setState方法是异步的。
+	这意味着在调用setState后，React不会立即更新组件的状态，而是将更新放入一个队列中，然后在合适的时机批量进行状态更新和重新渲染。
+	React之所以选择异步更新状态的方式，是为了提高性能和优化渲染过程。通过将多个setState调用合并为一次更新，可以减少不必要的重新渲染，提升性能
