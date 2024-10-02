@@ -1,0 +1,17 @@
+[{
+  "_id": {
+    "$oid": "66fcfa6e4aa88cbdd2ad97c5"
+  },
+  "dateForm": "10:20",
+  "dateTo": "12:00",
+  "capacity": 12,
+  "remaining": 12,
+  "isActive": true,
+  "content": "一个身份证只能买一张",
+  "order_time": [
+    {
+      "data": "2024/9/10 10:00-12:00",
+      "count": 10
+    }
+  ]
+}]
